@@ -30,7 +30,7 @@ def create_db_session(database_url: str) -> Engine:
         logging.info(f"Connected to database successfully")
         return engine_obj
     except SQLAlchemyError as e:
-        logging.error(f"Error connecting to database: {str(e)} using URL: {database_url}")
+        logging.error(f"Error connecting to database: {str(e)}")
         raise e
 
 
