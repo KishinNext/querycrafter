@@ -1,0 +1,27 @@
+
+version: '3'
+services:
+  app:
+    container_name: query_crafter
+    build: .
+    ports:
+      - '8080:8080'
+    volumes:
+      - '.:/app'
+    depends_on:
+      - postgres
+  postgres:
+    container_name: Adventureworks
+    image: postgres
+    environment:
+      - POSTGRES_DB=Adventureworks
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+    ports:
+      - "4432:5432"
+    volumes:
+      - query_crafter_store:/data
+volumes:
+  query_crafter_store:
+networks:
+  query_crafter_network:

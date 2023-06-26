@@ -1,0 +1,21 @@
+logging_level: INFO
+logging:
+  version: 1
+  disable_existing_loggers: true
+  formatters:
+      json:
+          (): pythonjsonlogger.jsonlogger.JsonFormatter
+          format: "%(asctime)s %(name)s %(levelname)s %(message)s"
+          rename_fields:
+              levelname: status
+          timestamp: true
+
+  handlers:
+      console:
+          class: logging.StreamHandler
+          formatter: json
+          stream: ext://sys.stdout
+  root:
+      level: INFO
+      handlers:
+          - console

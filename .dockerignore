@@ -1,0 +1,10 @@
+
+
+# Ignore unnecessary files inside allowed directories
+# This should go after the allowed directories
+**/*~
+**/*.dvc
+**.DS_Store
+**__pycache__
+**data
+**.gitignore
