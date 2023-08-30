@@ -20,8 +20,8 @@ secrets = get_secrets(config)
 engine = create_db_session(secrets['database']['url'])
 
 
+@pytest.mark.skipif(True, reason='should be ran only manually')  # comment this line if you want to run this test
 def test_process_metabase_queries():
-
     metabase_queries = [
         {
             "table_name": "customer",
@@ -96,6 +96,7 @@ def test_process_metabase_queries():
     assert dashboard_info["name"] == "[TEST] Dashboard for testing"
 
 
+@pytest.mark.skipif(True, reason='should be ran only manually')  # comment this line if you want to run this test
 class TestQueries:
     def test_run_graph_creator(self):
         result = run_graph_creator("""

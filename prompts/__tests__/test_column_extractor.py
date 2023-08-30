@@ -2,6 +2,7 @@ from prompts.column_extractor import ColumnExtractor, Table
 from prompts.info_extractor import InfoExtractor
 from utils.config_loaders import get_config, get_secrets
 from utils.database import create_db_session, get_table_info
+import pytest
 
 config = get_config()
 secrets = get_secrets(config)
@@ -68,7 +69,7 @@ class TestSpanishColumnExtractor:
             }
         }
 
-    # TODO: You should change the schema and table names to match your database
+    @pytest.mark.skipif(True, reason='should be ran only manually with AdventureWorks Database')
     def test_get_result_with_table(self):
         query = 'I want to know how many unique records there are in the customer table of the sales schema.'
         info_extractor = InfoExtractor(query=query).get_result()
