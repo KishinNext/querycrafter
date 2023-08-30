@@ -3,13 +3,13 @@ name: 'ci'
 on:
   push:
     branches:
-    - master
+    - main
 
 jobs:
   dagger:
     runs-on: ubuntu-latest
     env:
-      PROJECT_ID: prod-datascience-393718_cloudbuild
+      PROJECT_ID: prod-datascience-393718
     steps:
       -
         name: Checkout
