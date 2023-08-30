@@ -104,7 +104,7 @@ class MetabaseGraph(BaseModel):
     """
     Class that represents the Metabase Creator, this class is in charge of creating the queries for the Metabase
     """
-    model_name: str = Field(default='gpt-4', description="Name of the model to use.")
+    model_name: str = Field(default=config['default_model_name'], description="Name of the model to use.")
     temperature: int = Field(default=0, description="Temperature of the model to use.")
 
     def get_result(self, pydantic_object=None, card_info: dict = None) -> object:

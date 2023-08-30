@@ -180,7 +180,7 @@ def run_graph_creator(query: str, database: Engine, max_queries: int = 10) -> st
             table_info=table_data,
             table_metadata=table_metadata,
             engine_type=database.dialect.name,
-            model_name='gpt-4',
+            model_name=config['default_model_name'],
             number_of_queries=max_queries
         ).get_result()
 
