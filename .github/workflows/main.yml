@@ -1,0 +1,51 @@
+name: 'ci'
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  dagger:
+    runs-on: ubuntu-latest
+    env:
+      PROJECT_ID: prod-datascience-393718
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+      -
+        id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v1'
+        with:
+          token_format: 'access_token'
+          credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
+      -
+        name: Login to Google Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: gcr.io
+          username: oauth2accesstoken
+          password: ${{ steps.auth.outputs.access_token }}
+      -
+        name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
+        with:
+          project_id: ${{ env.PROJECT_ID }}
+      -
+        name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      -
+        name: Install
+        run: pip install dagger-io google-cloud-run
+
+      -
+        name: Copy development.yml on workspace
+        run: gcloud storage cp gs://prod-datascience-393718_cloudbuild/development.yaml config/.
+
+      -
+        name: Release and deploy with Dagger
+        run: python ci/main.py

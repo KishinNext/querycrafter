@@ -16,8 +16,8 @@ def test_create_db_session():
         create_db_session('invalid_database_url')
 
 
+@pytest.mark.skipif(True, reason='should be ran only manually with AdventureWorks Database')
 def test_get_table_info():
-    # TODO: Add test cases for get_table_info function, this depends on your database
     schema = {
         'schemas': {
             'sales': ['store']

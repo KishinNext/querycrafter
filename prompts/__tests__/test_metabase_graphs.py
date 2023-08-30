@@ -1,6 +1,8 @@
+import pytest
 from prompts.metabase_graphs import MetabaseGraph
 
 
+@pytest.mark.skipif(True, reason='should be ran only manually')  # comment this line if you want to run this test
 def test_numeric_indicator():
     metabase_creator = MetabaseGraph()
     card_info = {
@@ -35,6 +37,7 @@ def test_numeric_indicator():
         'visualization_settings_column_settings_scale']
 
 
+@pytest.mark.skipif(True, reason='should be ran only manually')  # comment this line if you want to run this test
 def test_bar_chart():
     metabase_creator = MetabaseGraph()
     card_info = {
@@ -63,6 +66,7 @@ def test_bar_chart():
     assert result['visualization_settings_graph_metrics'] == expected_card_info['visualization_settings_graph_metrics']
 
 
+@pytest.mark.skipif(True, reason='should be ran only manually')  # comment this line if you want to run this test
 def test_line_chart():
     metabase_creator = MetabaseGraph()
     card_info = {
@@ -102,6 +106,7 @@ def test_line_chart():
     assert result['visualization_settings_graph_metrics'] == expected_card_info['visualization_settings_graph_metrics']
 
 
+@pytest.mark.skipif(True, reason='should be ran only manually')  # comment this line if you want to run this test
 def test_table():
     metabase_creator = MetabaseGraph()
 

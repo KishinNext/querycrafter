@@ -138,7 +138,7 @@ class GeneralAgent(BaseModel):
         llm = ChatOpenAI(
             verbose=self.verbose,
             temperature=0,
-            model_name='gpt-4',
+            model_name=config['default_model_name'],
             openai_api_key=secrets['openai_api']['token'],
             openai_organization=secrets['openai_api']['organization']
         )

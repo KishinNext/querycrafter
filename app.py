@@ -37,7 +37,7 @@ api.include_router(
 )
 
 
-@api.get('/ping')
+@api.get("/healthcheck",  status_code=status.HTTP_200_OK)
 def health_check():
     """Health check endpoint. Returns the status of the API.
 
@@ -45,7 +45,7 @@ def health_check():
         dict: The status of the API.
     """
     return {
-        'health': 'OK'
+        'heapi_healthyalth': True
     }
 
 

@@ -15,6 +15,7 @@ from utils.config_loaders import (
     get_secrets
 )
 from utils.database import create_db_session
+import pytest
 
 config = get_config()
 secrets = get_secrets(config)
@@ -37,7 +38,7 @@ def test_generate_sql_code():
     assert result == expected
 
 
-# TODO: change the info extractor according to your database
+@pytest.mark.skipif(True, reason='should be ran only manually with AdventureWorks Database')
 def test_get_data():
     info_extractor = {
         'schemas': {
@@ -73,7 +74,7 @@ def test_process_columns_in_chunks():
     assert isinstance(result['columns'][0]['comment'], str)
 
 
-# TODO: change the info extractor according to your database
+@pytest.mark.skipif(True, reason='should be ran only manually with AdventureWorks Database')
 def test_run_sql_comment_generator():
     database = create_db_session(secrets['database']['url'])
     query = 'I need the SQL code to comment on the columns of the currency in the sales schema'

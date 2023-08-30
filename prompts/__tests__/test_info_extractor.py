@@ -40,7 +40,7 @@ class TestSpanishExtractor:
                     'sales': ['products']
                 }
             }),
-            ("case2", "give me more information about the custom schema and clients table", {
+            ("case2", "give me more information about the schema custom and clients table", {
                 'schemas': {
                     'custom': ['clients']
                 }

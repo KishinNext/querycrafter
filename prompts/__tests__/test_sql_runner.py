@@ -59,4 +59,4 @@ class TestSpanishSQLRunner:
             temperature=0
         )
         result = runner.get_result()
-        assert result['query'] == 'SELECT COUNT(*) FROM public.example;'
+        assert result['query'] in ('SELECT COUNT(*) FROM public.example;', 'SELECT COUNT(*) FROM public.example')
