@@ -48,4 +48,4 @@ jobs:
 
       -
         name: Release and deploy with Dagger
-        run: python ci/main.py
+        run: python ci/gcp_demo.py
