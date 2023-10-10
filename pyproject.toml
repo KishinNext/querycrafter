@@ -8,7 +8,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = ">=3.10,<4.0"
 sqlalchemy = "^1.4.47"
-langchain = "^0.0.274"
+langchain = "^0.0.312"
 pandas = "^2.0.1"
 openai = "^0.27.7"
 pytest = "^7.2.2"
